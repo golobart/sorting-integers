@@ -5,6 +5,8 @@ from selector.py_array_insort import PyArrayInSsort
 from selector.py_array_insort2 import PyArrayInSsort2
 from selector.py_array_preall import PyArrayPreall
 from selector.py_list import PyListSelector
+from selector.heap_max import HeapMax
+from selector.merge_sort import MergeSort
 
 
 def selector_factory(conf):
@@ -30,9 +32,15 @@ def selector_factory(conf):
     elif st == "py_list":
         logging.debug(f"selector_factory PyListSelector selected")
         selector = PyListSelector
-    elif st == "np_array":
-        logging.debug(f"selector_factory NPArraySelector selected")
-        selector = NPArraySelector
+    # elif st == "np_array":
+    #     logging.debug(f"selector_factory NPArraySelector selected")
+    #     selector = NPArraySelector
+    elif st == "heap_max":
+        logging.debug(f"selector_factory HeapMax selected")
+        selector = HeapMax
+    elif st == "merge_sort":
+        logging.debug(f"selector_factory MergeSort selected")
+        selector = MergeSort
     else:
         raise ValueError(f"Unknow store type {st}")
     return selector

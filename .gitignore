@@ -131,3 +131,5 @@ dmypy.json
 # this project
 data/in/*.txt
 data/out/*.txt
+data/log/*.txt
+data/log/*.log

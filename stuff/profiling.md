@@ -19,30 +19,40 @@ python main_presorter.py -n 100000 -if ../data/in/numbers_30.txt -of pepepepe
 python main_presorter.py -n 30000000 -if ../data/in/numbers_30.txt -of pepepepe  
 python main_consolidator.py -n 100000 -if ../data/in/numbers_30.txt -of ../data/out/sorted100000.txt  
   
+Times are for Lenovo ThinkPad T14 core i5
 10 mins (100.000 biggest from 30.000.000)  
 python main_serial.py -n 100000 -if ../data/in/numbers_30.txt -of ../data/out/numbers_30_100000_sorted.txt  
-4 mins would improve with parallel consolidators (100.000 biggest from 30.000.000)  
+4 mins would improve with parallel consolidators (100.000 biggest from 30.000.000)  (6 min using heap_max)
 python main_parallel.py -n 100000 -if ../data/in/numbers_30.txt -of ../data/out/numbers_30_100000_sorted.txt  
   
 20 mins, enough with 1 consolidator (30.000.000 biggest from 100.000.000)  
 python main_parallel.py -n 30000000 -if ../data/in/numbers_100.txt -of ../data/out/numbers_100_30000000_sorted.txt  
+
 6 mins, enough with 1 consolidator (30.000.000 biggest from 50.000.000)  
 python main_parallel.py -n 30000000 -if ../data/in/numbers_50.txt -of ../data/out/numbers_50_30000000_sorted.txt  
+
 11 mins, enough with 1 consolidator (2.000.000 biggest from 100.000.000)  
 python main_parallel.py -n 2000000 -if ../data/in/numbers_100.txt -of ../data/out/numbers_100_2000000_sorted.txt  
+
 5 mins, enough with 1 consolidator (2.000.000 biggest from 50.000.000)  
 python main_parallel.py -n 2000000 -if ../data/in/numbers_50.txt -of ../data/out/numbers_50_2000000_sorted.txt  
+
 10 mins!!! (30.000.000 biggest from 50.000.000)  
  python .\main_parallel.py -n 30000000 -if ..\data\in\numbers_50.txt -of ..\data\out\numbers_50_30000000_sorted_heapmax.txt
+
 15 mins (30.000.000 biggest from 100.000.000) (Linux sort takes 7 minutes ```sort -rn 100000000_nums.txt | head -30000000```)
  python .\main_parallel.py -n 30000000 -if ..\data\in\numbers_a100.txt -of ..\data\out\numbers_a100_30000000_sorted.txt
+
  16 mins (30.000.000 biggest from 100.000.000)
  python .\main_parallel.py -n 30000000 -if ..\data\in\numbers_a100.txt -of ..\data\out\numbers_a100_30000000_sorted2.txt
+
  25 mins??? (30.000.000 biggest from 100.000.000)
  python .\main_parallel.py -n 30000000 -if ..\data\in\numbers_a100.txt -of ..\data\out\numbers_a100_30000000_sorted_mergesort.txt
+ 
  28 mins (30.000.000 biggest from 100.000.000)
  python .\main_interleaced.py -n 30000000 -if ..\data\in\numbers_a100.txt -of ..\data\out\numbers_a100_30000000_sorted_mergesort.txt
-# ctrl-c process after more than 50 minuts running with full memory occupation and humunguous(tens of milions) number of Page Faults!!!
+
+Powershell -> ctrl-c process after more than 50 minuts running with full memory occupation and humunguous(tens of milions) number of Page Faults!!!
  Get-Content -Path ..\data\in\numbers_a100.txt | Sort-Object -Descending {[int]$_} | Select-Object -First 30000000 | Out-File -FilePath ..\data\out\numbers_a100_30000000_sorted_PowerShell.txt
 
 ### profiling:

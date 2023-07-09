@@ -2,14 +2,6 @@ Sorter-Selector system has been developed and tested under Windows 10 and Python
 The development has also been tested in Fedora 35 and Python 3.10.4.  
 You don't need to install any additional module or library to run it.
 
-Before to run the Sorter-Selector review the config parameters, to run in Linux use forward slashes 
-in parameters containing a path: slices_pool and consolidation_pool:
-```
-    # Folder where slices of input file are stored
-    slices_pool = ../data/pools/slices/
-    # Folder where presorted slices are reduced/consolidated
-    consolidation_pool = ../data/pools/consolidation/
-```
 The Sorter-Selector is a 3 steps strategy:
 1. Slicer, takes the input file and divides it in smaller files of n lines (slice)
 2. Presorter, Sorts each slice
